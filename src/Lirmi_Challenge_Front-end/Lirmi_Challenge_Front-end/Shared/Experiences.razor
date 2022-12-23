@@ -1,0 +1,162 @@
+﻿@foreach (var Experience in ExperiencesList)
+{
+    <div class="gap-4">
+        <div class="mb-2 d-flex">
+            <div style="width: 24px;">
+                <MudText Typo="Typo.body2">
+                    @Experience.Number
+                </MudText>
+            </div>
+
+            @if (Experience.Active)
+            {
+                <div class="flex-1" style="padding: 0.75rem; color: var(--mud-palette-primary-text); background-color: var(--mud-palette-primary); border: 1px solid #DADADA; border-radius: 12px; ">
+                    <div class="mb-2 d-flex align-center justify-space-between">
+                        <MudText Typo="Typo.body2" Style="font-weight: 700;">
+                            @Experience.Title
+                        </MudText>
+                        <MudIconButton Icon="@Icons.Material.Filled.MoreVert" Size="Size.Small" Style="color: var(--mud-palette-primary-text)" />
+                    </div>
+
+                    <div Class="mb-2">
+                        <MudText Typo="Typo.caption">
+                            @Experience.Description
+                        </MudText>
+                    </div>
+
+                    <div class="d-flex align-center justify-space-between">
+                        <MudText Typo="Typo.caption">
+                            @Experience.Time
+                        </MudText>
+
+                        <MudMenu FullWidth="true">
+                            <ActivatorContent>
+                                <MudChip Class="mud-palette-text-primary ma-0" Size="Size.Small" Style="@Experience.State.Style">
+                                    <MudText Typo="Typo.caption">
+                                        @Experience.State.Name
+                                    </MudText>
+                                    <MudIcon Icon="@Icons.Filled.KeyboardArrowDown" Size="Size.Small" />
+                                </MudChip>
+                            </ActivatorContent>
+                            <ChildContent>
+                                <MudMenuItem>Activo</MudMenuItem>
+                                <MudMenuItem>Por validad</MudMenuItem>
+                                <MudMenuItem>Borrador</MudMenuItem>
+                                <MudMenuItem>Inactivo</MudMenuItem>
+                            </ChildContent>
+                        </MudMenu>
+                    </div>
+                </div>
+            }
+            else
+            {
+                <div class="flex-1" style="padding: 0.75rem; background-color: #FFFFFF; border: 1px solid #DADADA; border-radius: 12px;">
+                    <div class="mb-2 d-flex">
+                        <MudText Typo="Typo.body2" Style="font-weight: 700;">
+                            @Experience.Title
+                        </MudText>
+                    </div>
+
+                    <div Class="mb-2">
+                        <MudText Class="mud-palette-text-secondary mb-2" Typo="Typo.caption">
+                            @Experience.Description
+                        </MudText>
+                    </div>
+
+                    <div class="d-flex align-center justify-space-between">
+                        <MudText Class="mud-palette-text-secondary" Typo="Typo.caption">
+                            @Experience.Time
+                        </MudText>
+
+                        <MudMenu FullWidth="true">
+                            <ActivatorContent>
+                                <MudChip Class="mud-palette-text-primary ma-0" Size="Size.Small" Style="@Experience.State.Style">
+                                    <MudText Typo="Typo.caption">
+                                        @Experience.State.Name
+                                    </MudText>
+                                    <MudIcon Icon="@Icons.Filled.KeyboardArrowDown" Size="Size.Small" />
+                                </MudChip>
+                            </ActivatorContent>
+                            <ChildContent>
+                                <MudMenuItem>Activo</MudMenuItem>
+                                <MudMenuItem>Por validad</MudMenuItem>
+                                <MudMenuItem>Borrador</MudMenuItem>
+                                <MudMenuItem>Inactivo</MudMenuItem>
+                            </ChildContent>
+                        </MudMenu>
+                    </div>
+                </div>
+            }
+
+
+
+        </div>
+    </div>
+}
+
+
+@code {
+    private static List<Experience> ExperiencesList = new List<Experience>
+{
+        new Experience
+        {
+            Number = 1,
+            Title = "Recursos",
+            Description = "La caperucita roja",
+            Time = "17 min",
+            State = new State
+            {
+                Id = 1,
+                Name = "Activo",
+                Style = "background-color: #C7F4CB;"
+            },
+            StateId = 1,
+            Active = false
+        },
+        new Experience
+        {
+            Number = 2,
+            Title = "Selección múltiple",
+            Description = "Nombre de la actividad",
+            Time = "17 min",
+            State = new State
+            {
+                Id = 2,
+                Name = "Por validar",
+                Style = "background-color: #DFF9FF;"
+            },
+            StateId = 2,
+            Active = true
+        },
+        new Experience
+        {
+            Number = 3,
+            Title = "Completar arrastrando",
+            Description = "Nombre de la actividad",
+            Time = "17 min",
+            State = new State
+        {
+            Id = 3,
+            Name = "Borrador",
+            Style = "background-color: #EAEAEA;"
+        },
+            StateId = 3,
+            Active = false
+        },
+        new Experience
+        {
+            Number = 4,
+            Title = "Etiquetar",
+            Description = "Nombre de la actividad",
+            Time = "17 min",
+            State = new State
+            {
+                Id = 4,
+                Name = "Inactivo",
+                Style = "background-color: #FFD5D2;"
+            },
+            StateId = 4,
+            Active = false
+        }
+    };
+}

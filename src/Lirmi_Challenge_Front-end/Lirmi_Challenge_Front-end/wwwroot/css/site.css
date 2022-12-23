@@ -1,25 +1,19 @@
 @import url('open-iconic/font/css/open-iconic-bootstrap.min.css');
 
+:root {
+    --lirmi-toolbar-height: 120px;
+}
+
 html, body {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
+body {
+    height: 100vh;
+}
+
 h1:focus {
     outline: none;
-}
-
-a, .btn-link {
-    color: #0071c1;
-}
-
-.btn-primary {
-    color: #fff;
-    background-color: #1b6ec2;
-    border-color: #1861ac;
-}
-
-.content {
-    padding-top: 1.1rem;
 }
 
 .valid.modified:not([type=checkbox]) {
@@ -62,3 +56,35 @@ a, .btn-link {
     .blazor-error-boundary::after {
         content: "An error has occurred."
     }
+
+.border-color-grey-l2 {
+    border-color: #e0e0e0;
+}
+
+
+.toolbar {
+    z-index: 10;
+    height: var(--lirmi-toolbar-height);
+    position: fixed;
+    background-color: #FFFFFF;
+}
+
+.mud-palette-text-primary {
+    color: var(--mud-palette-text-primary);
+}
+
+.mud-palette-text-secondary {
+    color: var(--mud-palette-text-secondary);
+}
+
+.w-full {
+    width: 100%;
+}
+
+.h-full {
+    height: 100%;
+}
+
+.mud-button-label {
+    padding: 0px;
+}

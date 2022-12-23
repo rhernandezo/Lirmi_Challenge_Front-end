@@ -1,7 +1,120 @@
 ﻿@page "/"
 
-<PageTitle>Index</PageTitle>
+<PageTitle>Challenge</PageTitle>
 
-<h1>Lirmi Challenge Front-end</h1>
+<div class="fixed pa-4" style="width: 242px; background-color: #EEEEEE; top: var(--lirmi-toolbar-height); bottom: 0;">
+    <div class="mb-4 d-flex align-center justify-space-between">
+        <MudText Typo="Typo.h3">Experiencias</MudText>
 
-Bienvenidos
+        <MudIconButton Icon="@Icons.Material.Filled.Add" Variant="Variant.Filled" Size="Size.Medium" Style="padding: 3px;background-color: #FFFFFF;" />
+    </div>
+
+    <Experiences />
+</div>
+
+<div class="absolute" style="left: 242px; right: 336px;">
+    <div class="pa-6" style="background-color: #FFFFFF;">
+        <div Class="d-flex flex-column gap-2 mb-4">
+            <MudTextField T="string" Label="Nombre de la actividad" Variant="Variant.Outlined" />
+
+            <MudSelect T="string" Label="Recurso" Variant="Variant.Outlined" AnchorOrigin="Origin.BottomCenter">
+                <MudSelectItem T="string" Value="@("Recurso 1")" />
+                <MudSelectItem T="string" Value="@("Recurso 2")" />
+                <MudSelectItem T="string" Value="@("Recurso 3")" />
+            </MudSelect>
+
+            <MudTextField T="string" Label="Enunciado" Variant="Variant.Outlined" Text="@("")" Lines="4" />
+        </div>
+
+        <div class="pa-4" style="border: 1px solid #DADADA; border-radius: 12px;">
+            <div class="d-flex flex-column gap-4">
+                <MudSelect T="string" Label="Actividad" @bind-Value="value" Variant="Variant.Outlined" AnchorOrigin="Origin.BottomCenter" Style="max-width: 300px;">
+                    <MudSelectItem T="string" Value="@("Selección múltiple")" />
+                    <MudSelectItem T="string" Value="@("Actividad 2")" />
+                    <MudSelectItem T="string" Value="@("Actividad 3")" />
+                </MudSelect>
+
+                <div class="d-flex align-center">
+                    <MudIcon Class="mr-4" Icon="@Icons.Outlined.Circle" />
+
+                    <MudTextField Class="flex-1" T="string" Label="Alternativa 1" Variant="Variant.Outlined" />
+
+                    <MudIconButton Class="ml-4" Icon="@Icons.Material.Filled.MoreVert" />
+                </div>
+
+                <div class="d-flex align-center">
+                    <MudIcon Class="mr-4" Icon="@Icons.Outlined.Circle" />
+
+                    <MudTextField Class="flex-1" T="string" Label="Alternativa 2" Variant="Variant.Outlined" />
+
+                    <MudIconButton Class="ml-4" Icon="@Icons.Material.Filled.MoreVert" />
+                </div>
+
+                <div class="d-flex align-center">
+                    <MudIcon Class="mr-4" Icon="@Icons.Outlined.Circle" />
+
+                    <MudTextField Class="flex-1" T="string" Label="Alternativa 3" Variant="Variant.Outlined" />
+
+                    <MudIconButton Class="ml-4" Icon="@Icons.Material.Filled.MoreVert" />
+                </div>
+
+            </div>
+        </div>
+
+        @if (SwitchPistas || SwitchSolucionario || SwitchPersonalizarMensaje)
+        {
+            <div class="pa-4 mt-4" style="border: 1px solid #DADADA; border-radius: 12px;">
+                <div class="d-flex flex-column gap-2">
+                    @if (SwitchPistas)
+                    {
+                        <MudTextField T="string" Label="Pistas" Variant="Variant.Outlined" Text="@("")" Lines="2" />
+                    }
+                    @if (SwitchSolucionario)
+                    {
+                        <MudTextField T="string" Label="Solucionario" Variant="Variant.Outlined" Text="@("")" Lines="2" />
+                    }
+                    @if (SwitchPersonalizarMensaje)
+                    {
+                        <MudTextField T="string" Label="Personalizar mensaje" Variant="Variant.Outlined" Text="@("")" Lines="2" />
+                    }
+                </div>
+            </div>
+        }
+
+    </div>
+</div>
+
+<div class="fixed pa-4" style="width: 336px; background-color: #EEEEEE; top: var(--lirmi-toolbar-height); bottom: 0;right: 0;">
+    <MudText Class="mb-2" Style="font-weight: 700;">Ayuda antes de responder</MudText>
+    <div class="d-flex align-center justify-space-between">
+        <MudText>Pistas</MudText>
+        <MudSwitch @bind-Checked="@SwitchPistas" Color="Color.Primary" />
+    </div>
+
+    <MudDivider Class="my-6 border-color-grey-l2" />
+
+    <MudText Class="mb-2" Style="font-weight: 700;">Retroalimentación de respuesta incorrecta</MudText>
+    <div class="d-flex align-center justify-space-between">
+        <MudText>Solucionario</MudText>
+        <MudSwitch @bind-Checked="@SwitchSolucionario" Color="Color.Primary" />
+    </div>
+
+    <MudDivider Class="my-6" />
+
+    <MudText Class="mb-2" Style="font-weight: 700;">Retroalimentación de respuesta correcta</MudText>
+    <div class="d-flex align-center justify-space-between">
+        <MudText>Personalizar mensaje</MudText>
+        <MudSwitch @bind-Checked="@SwitchPersonalizarMensaje" Color="Color.Primary" />
+    </div>
+</div>
+
+
+@code{
+    public int Radio_Size { get; set; }
+
+    private string value { get; set; } = "Selección múltiple";
+
+    public bool SwitchPistas { get; set; } = false;
+    public bool SwitchSolucionario { get; set; } = false;
+    public bool SwitchPersonalizarMensaje { get; set; } = false;
+}

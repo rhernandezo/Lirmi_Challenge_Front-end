@@ -7,4 +7,15 @@
     <RootNamespace>Lirmi_Challenge_Front_end</RootNamespace>
   </PropertyGroup>
 
+  <PropertyGroup Condition=" '$(RunConfiguration)' == 'Lirmi_Challenge_Front-end' " />
+
+  <ItemGroup>
+    <PackageReference Include="MudBlazor" Version="6.1.6" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="Shared\Classes\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Shared\Classes\" />
+  </ItemGroup>
 </Project>

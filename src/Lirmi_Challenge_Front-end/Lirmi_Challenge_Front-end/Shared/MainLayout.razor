@@ -2,18 +2,44 @@
 
 <PageTitle>Lirmi_Challenge_Front-end</PageTitle>
 
-<div class="page">
-    <div class="sidebar">
-        <NavMenu />
-    </div>
+<main>
+    <Toolbar />
 
-    <main>
-        <div class="top-row px-4">
+    <article>
+        @Body
+    </article>
+</main>
 
-        </div>
+<MudThemeProvider Theme="LirmiTheme" />
+<MudDialogProvider />
+<MudSnackbarProvider />
 
-        <article class="content px-4">
-            @Body
-        </article>
-    </main>
-</div>
+@code{
+    MudTheme LirmiTheme = new MudTheme()
+    {
+        Palette = new Palette()
+        {
+            Primary = "#6600FF",
+            TextPrimary = "#010202",
+            TextSecondary = "#747474",
+            Divider = "#ADADAD"
+        },
+        Typography = new Typography()
+        {
+            H1 = new H1()
+            {
+                FontSize = "2rem",
+                FontWeight = 700
+            },
+            H3 = new H3()
+            {
+                FontSize = "1.125rem",
+                FontWeight = 700
+            },
+            Body2 = new Body2()
+            {
+                FontSize = "0.875rem"
+            }
+        }
+    };
+}
